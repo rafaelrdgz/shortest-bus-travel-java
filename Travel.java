@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Travel implements Comparable {
-    private ArrayDeque<Target> travel;
+    private LinkedList<Target> travel;
     private int distance;
     private boolean walk;
     private boolean complete;
@@ -14,14 +14,14 @@ public class Travel implements Comparable {
     }
 
     public Travel() {
-        travel = new ArrayDeque<Target>();
+        travel = new LinkedList<Target>();
         distance = 0;
         walk = true;
         complete = false;
     }
 
     public Travel(Travel travel, boolean walk) {
-        this.travel = new ArrayDeque<>(travel.travel);
+        this.travel = new LinkedList<>(travel.travel);
         this.distance = travel.distance;
         this.walk = walk;
         this.complete = travel.complete;
@@ -29,11 +29,16 @@ public class Travel implements Comparable {
 
     public boolean addBS(Target BS) {
         boolean founded = false;
-        for (Target o: travel)
-            if(o.getBS().c == BS.getBS().c){
+        ListIterator<Target> iter = travel.listIterator();        
+        
+        while (iter.hasNext()) {
+            Target t = iter.next();
+            if(t.getBS().c == BS.getBS().c){
                 founded = true;
                 break;
             }
+        }
+        
         if (!founded) {
             travel.addLast(BS);
             distance += BS.getDistance();
