@@ -1,3 +1,8 @@
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args){
         BusStop A = new BusStop('A');
@@ -13,46 +18,54 @@ public class Main {
         BusStop K = new BusStop('K');
         BusStop L = new BusStop('L');
 
-        A.addNextBS(new Target(B, 4));
-        A.addNextBS(new Target(C, 3));
-        A.addNextBS(new Target(K, 10));
-        B.addNextBS(new Target(A, 3));
-        B.addNextBS(new Target(C, 2));
-        B.addNextBS(new Target(E, 3));
-        C.addNextBS(new Target(A, 3));
-        C.addNextBS(new Target(B, 2));
-        C.addNextBS(new Target(I, 4));
-        D.addNextBS(new Target(E, 3));
-        D.addNextBS(new Target(F, 5));
-        E.addNextBS(new Target(F, 2));
-        E.addNextBS(new Target(D, 3));
-        E.addNextBS(new Target(B, 3));
-        E.addNextBS(new Target(G, 2));
-        E.addNextBS(new Target(H, 3));
-        F.addNextBS(new Target(D, 5));
-        F.addNextBS(new Target(E, 2));
-        G.addNextBS(new Target(E, 2));
-        G.addNextBS(new Target(H, 2));
-        H.addNextBS(new Target(E, 3));
-        H.addNextBS(new Target(G, 2));
-        H.addNextBS(new Target(I, 4));
-        H.addNextBS(new Target(L, 5));
-        I.addNextBS(new Target(H, 4));
-        I.addNextBS(new Target(C, 4));
-        I.addNextBS(new Target(J, 4));
-        J.addNextBS(new Target(I, 4));
-        J.addNextBS(new Target(K, 3));
-        K.addNextBS(new Target(K, 3));
-        K.addNextBS(new Target(A, 10));
-        K.addNextBS(new Target(L, 2));
-        L.addNextBS(new Target(K, 2));
-        L.addNextBS(new Target(H, 5));
+        Route A1 = new Route("A1");
+        A1.addBS(new Target(A,0, true));
+        A1.addBS(new Target(B,4, false));
+        A1.addBS(new Target(C,2, false));
+        A1.addBS(new Target(A,3, false));
 
-        A.addNearbyBS(new Target(B, 3));
-        B.addNearbyBS(new Target(A, 3));
-        B.addNearbyBS(new Target(H, 2));
-        H.addNearbyBS(new Target(B, 2));
+        Route A2 = new Route("A2");
+        A2.addBS(new Target(E,0, true));
+        A2.addBS(new Target(H,3, false));
+        A2.addBS(new Target(I,4, false));
+        A2.addBS(new Target(C,4, false));
+        A2.addBS(new Target(B,2, false));
+        A2.addBS(new Target(E,3, false));
 
-        Map.getTravel(A, H).print();
+        Route A3 = new Route("A3");
+        A3.addBS(new Target(E,0, true));
+        A3.addBS(new Target(F,2, false));
+        A3.addBS(new Target(D,5, false));
+        A3.addBS(new Target(E,3, false));
+
+        Route A4 = new Route("A4");
+        A4.addBS(new Target(E,0, true));
+        A4.addBS(new Target(H,3, false));
+        A4.addBS(new Target(G,2, false));
+        A4.addBS(new Target(E,2, false));
+
+        Route A5 = new Route("A5");
+        A5.addBS(new Target(A,0, true));
+        A5.addBS(new Target(K,10, false));
+        A5.addBS(new Target(L,2, false));
+        A5.addBS(new Target(H,5, false));
+        A5.addBS(new Target(I,4, false));
+        A5.addBS(new Target(J,4, false));
+        A5.addBS(new Target(K,3, false));
+
+        A.addNearbyBS(new Target(B, 3, true));
+        B.addNearbyBS(new Target(A, 3, true));
+        B.addNearbyBS(new Target(H, 2, true));
+        H.addNearbyBS(new Target(B, 2, true));
+
+        Map m = Map.getInstance();
+        Travel t = m.getTravel(K, D);
+        t.print();
+
+        LinkedList<Pair<Route, BusStop>> list = m.getRoutes(t);
+        for (Pair<Route, BusStop> p: list) {
+            if(p.getKey() == null) System.out.println("Camina hacia la parada " + p.getValue().c);
+            else System.out.println("Coge el omnibus " + p.getKey().getId() + " hasta la parada " + p.getValue().c);
+        }
     }
 }

@@ -9,8 +9,13 @@ public class Travel implements Comparable {
     public int getDistance() {
         return distance;
     }
+
     public boolean isComplete() {
         return complete;
+    }
+
+    public LinkedList<Target> getTravel() {
+        return travel;
     }
 
     public Travel() {
@@ -29,16 +34,16 @@ public class Travel implements Comparable {
 
     public boolean addBS(Target BS) {
         boolean founded = false;
-        ListIterator<Target> iter = travel.listIterator();        
-        
+        ListIterator<Target> iter = travel.listIterator();
+
         while (iter.hasNext()) {
             Target t = iter.next();
-            if(t.getBS().c == BS.getBS().c){
+            if (t.getBS().c == BS.getBS().c) {
                 founded = true;
                 break;
             }
         }
-        
+
         if (!founded) {
             travel.addLast(BS);
             distance += BS.getDistance();
@@ -79,13 +84,13 @@ public class Travel implements Comparable {
         return list;
     }
 
-    public void print(){
-        for (Target t: travel)
+    public void print() {
+        for (Target t : travel)
             System.out.println(t.getBS().c);
         System.out.println(distance);
     }
 
-    public int getSize(){
+    public int getSize() {
         return travel.size();
     }
 
