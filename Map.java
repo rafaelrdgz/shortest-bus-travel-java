@@ -63,7 +63,7 @@ public class Map {
                         if (r.exist(targetList.get(j - 1).getBS(), targetList.get(j).getBS(), targetList.get(j).getDistance())) {
                             aux++;
                         } else{
-                            System.out.println(targetList.get(j).getBS().c);
+                            System.out.println(targetList.get(j).getBS().getId());
                             break;
                         }
                     }

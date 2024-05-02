@@ -4,13 +4,21 @@ public class BusStop implements Comparable {
     private ArrayList<Target> nextBS;
     private ArrayList<Target> nearbyBS;
     private ArrayList<Route> routes;
-    public char c;
+    private String id;
 
-    public BusStop(char c) {
+    public BusStop(String id) {
         nextBS = new ArrayList<Target>();
         nearbyBS = new ArrayList<Target>();
         routes = new ArrayList<Route>();
-        this.c = c;
+        setId(id);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void addNextBS(Target BS) {
@@ -51,11 +59,11 @@ public class BusStop implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return Character.compare(c, ((BusStop) o).c);
+        return id.compareTo(((BusStop)o).getId());
     }
 
     @Override
     public boolean equals(Object o) {
-        return ((BusStop) o).c == c;
+        return ((BusStop) o).getId().equalsIgnoreCase(id);
     }
 }

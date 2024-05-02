@@ -43,6 +43,6 @@ public class Target implements Comparable {
     @Override
     public boolean equals(Object o) {
         Target t = (Target) o;
-        return t.getDistance() == this.distance && t.getBS().c == this.getBS().c && this.walk == t.walk;
+        return t.getDistance() == this.distance && t.getBS().getId().equalsIgnoreCase(this.getBS().getId()) && this.walk == t.walk;
     }
 }

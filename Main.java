@@ -5,18 +5,18 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args){
-        BusStop A = new BusStop('A');
-        BusStop B = new BusStop('B');
-        BusStop C = new BusStop('C');
-        BusStop D = new BusStop('D');
-        BusStop E = new BusStop('E');
-        BusStop F = new BusStop('F');
-        BusStop G = new BusStop('G');
-        BusStop H = new BusStop('H');
-        BusStop I = new BusStop('I');
-        BusStop J = new BusStop('J');
-        BusStop K = new BusStop('K');
-        BusStop L = new BusStop('L');
+        BusStop A = new BusStop("A");
+        BusStop B = new BusStop("B");
+        BusStop C = new BusStop("C");
+        BusStop D = new BusStop("D");
+        BusStop E = new BusStop("E");
+        BusStop F = new BusStop("F");
+        BusStop G = new BusStop("G");
+        BusStop H = new BusStop("H");
+        BusStop I = new BusStop("I");
+        BusStop J = new BusStop("J");
+        BusStop K = new BusStop("K");
+        BusStop L = new BusStop("L");
 
         Route A1 = new Route("A1");
         A1.addBS(new Target(A,0, true));
@@ -59,13 +59,13 @@ public class Main {
         H.addNearbyBS(new Target(B, 2, true));
 
         Map m = Map.getInstance();
-        Travel t = m.getTravel(K, D);
+        Travel t = m.getTravel(A, D);
         t.print();
 
         LinkedList<Pair<Route, BusStop>> list = m.getRoutes(t);
         for (Pair<Route, BusStop> p: list) {
-            if(p.getKey() == null) System.out.println("Camina hacia la parada " + p.getValue().c);
-            else System.out.println("Coge el omnibus " + p.getKey().getId() + " hasta la parada " + p.getValue().c);
+            if(p.getKey() == null) System.out.println("Camina hacia la parada " + p.getValue().getId());
+            else System.out.println("Coge el omnibus " + p.getKey().getId() + " hasta la parada " + p.getValue().getId());
         }
     }
 }

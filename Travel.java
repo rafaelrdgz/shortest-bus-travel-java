@@ -38,7 +38,7 @@ public class Travel implements Comparable {
 
         while (iter.hasNext()) {
             Target t = iter.next();
-            if (t.getBS().c == BS.getBS().c) {
+            if (t.getBS().getId().equalsIgnoreCase(BS.getBS().getId())) {
                 founded = true;
                 break;
             }
@@ -86,7 +86,7 @@ public class Travel implements Comparable {
 
     public void print() {
         for (Target t : travel)
-            System.out.println(t.getBS().c);
+            System.out.println(t.getBS().getId());
         System.out.println(distance);
     }
 
