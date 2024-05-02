@@ -11,15 +11,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainViewController">
    <children>
-      <ImageView fitHeight="630.0" fitWidth="1024.0" pickOnBounds="true">
+      <ImageView fx:id="imgView" cache="true" cacheHint="SPEED" fitHeight="630.0" fitWidth="1024.0" pickOnBounds="true">
          <image>
             <Image url="@out.png" />
          </image>
       </ImageView>
-      <ChoiceBox layoutX="32.0" layoutY="673.0" prefWidth="150.0" />
+      <ChoiceBox focusTraversable="false" layoutX="32.0" layoutY="673.0" prefWidth="150.0" />
       <Label layoutX="874.0" layoutY="629.0" prefHeight="30.0" prefWidth="86.0" text="Consulta">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -40,11 +39,10 @@
          </font>
       </Label>
       <Label layoutX="608.0" layoutY="677.0" text="Identificador de la parada" />
-      <TextField focusTraversable="false" layoutX="608.0" layoutY="708.0" promptText="ID Parada" />
-      <Button focusTraversable="false" layoutX="757.0" layoutY="708.0" mnemonicParsing="false" text="Insertar" />
+      <TextField fx:id="txtFieldAddBusStop" focusTraversable="false" layoutX="608.0" layoutY="708.0" promptText="ID Parada" />
+      <Button fx:id="btnAddBusStop" focusTraversable="false" layoutX="757.0" layoutY="708.0" mnemonicParsing="false" onAction="#addBusStop" text="Insertar" />
       <Separator layoutX="593.0" layoutY="758.0" prefHeight="3.0" prefWidth="232.0" />
-      <Label layoutX="517.0" layoutY="915.0" text="No. Paradas" />
-      <Button layoutX="181.0" layoutY="673.0" mnemonicParsing="false" text="Seleccionar" />
+      <Button focusTraversable="false" layoutX="181.0" layoutY="673.0" mnemonicParsing="false" text="Seleccionar" />
       <Button layoutX="171.0" layoutY="816.0" mnemonicParsing="false" text="Nuevo" />
       <Separator layoutX="827.0" layoutY="792.0" prefHeight="3.0" prefWidth="200.0" />
       <Label layoutX="633.0" layoutY="767.0" text="Eliminar parada">
@@ -53,18 +51,18 @@
          </font>
       </Label>
       <Label layoutX="608.0" layoutY="804.0" text="Identificador de la parada" />
-      <TextField focusTraversable="false" layoutX="608.0" layoutY="828.0" promptText="ID Parada" />
-      <Button focusTraversable="false" layoutX="757.0" layoutY="828.0" mnemonicParsing="false" text="Eliminar" />
-      <Label layoutX="398.0" layoutY="646.0" text="Eliminar ruta">
+      <TextField fx:id="txtFieldDeleteBusStop" focusTraversable="false" layoutX="608.0" layoutY="828.0" promptText="ID Parada" />
+      <Button fx:id="btnDeleteBusStop" focusTraversable="false" layoutX="757.0" layoutY="828.0" mnemonicParsing="false" onAction="#deleteBusStop" text="Eliminar" />
+      <Label layoutX="398.0" layoutY="893.0" text="Buscar ruta">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="373.0" layoutY="681.0" text="Identificador de la ruta" />
-      <TextField focusTraversable="false" layoutX="373.0" layoutY="706.0" promptText="ID Ruta" />
-      <Button focusTraversable="false" layoutX="522.0" layoutY="706.0" mnemonicParsing="false" text="Insertar" />
+      <Label layoutX="373.0" layoutY="928.0" text="Identificador de la ruta" />
+      <TextField focusTraversable="false" layoutX="373.0" layoutY="953.0" promptText="ID Ruta" />
+      <Button focusTraversable="false" layoutX="522.0" layoutY="953.0" mnemonicParsing="false" text="Buscar" />
       <Separator layoutX="-3.0" layoutY="757.0" prefHeight="3.0" prefWidth="591.0" />
-      <Label layoutX="398.0" layoutY="765.0" text="Buscar ruta">
+      <Label layoutX="398.0" layoutY="765.0" text="Eliminar ruta">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -73,23 +71,14 @@
       <TextField focusTraversable="false" layoutX="373.0" layoutY="836.0" promptText="ID Ruta" />
       <Button focusTraversable="false" layoutX="522.0" layoutY="836.0" mnemonicParsing="false" text="Eliminar" />
       <Separator layoutX="342.0" layoutY="875.0" prefHeight="3.0" prefWidth="481.0" />
-      <Label layoutX="389.0" layoutY="885.0" text="Insertar ruta">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="361.0" layoutY="915.0" text="Identificador de la ruta" />
-      <TextField focusTraversable="false" layoutX="359.0" layoutY="939.0" promptText="ID Ruta" />
-      <Spinner focusTraversable="false" layoutX="517.0" layoutY="939.0" prefHeight="25.0" prefWidth="64.0" />
-      <Button focusTraversable="false" layoutX="437.0" layoutY="970.0" mnemonicParsing="false" text="Insertar" />
       <Label layoutX="630.0" layoutY="891.0" text="Buscar parada">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <Label layoutX="605.0" layoutY="927.0" text="Identificador de la parada" />
-      <TextField focusTraversable="false" layoutX="605.0" layoutY="952.0" promptText="ID Parada" />
-      <Button focusTraversable="false" layoutX="754.0" layoutY="952.0" mnemonicParsing="false" text="Buscar" />
+      <TextField fx:id="txtFieldFindBusStop" focusTraversable="false" layoutX="605.0" layoutY="952.0" promptText="ID Parada" />
+      <Button fx:id="btnFindBusStop" focusTraversable="false" layoutX="754.0" layoutY="952.0" mnemonicParsing="false" onAction="#findBusStop" text="Buscar" />
       <Label layoutX="32.0" layoutY="636.0" text="Seleccionar mapa">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -101,5 +90,15 @@
          </font>
       </Label>
       <TextField focusTraversable="false" layoutX="25.0" layoutY="816.0" promptText="Nombre Mapa" />
+      <Label layoutX="516.0" layoutY="669.0" text="No. Paradas" />
+      <Label layoutX="388.0" layoutY="639.0" text="Insertar ruta">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="669.0" text="Identificador de la ruta" />
+      <TextField focusTraversable="false" layoutX="358.0" layoutY="693.0" promptText="ID Ruta" />
+      <Spinner focusTraversable="false" layoutX="516.0" layoutY="693.0" prefHeight="25.0" prefWidth="64.0" />
+      <Button focusTraversable="false" layoutX="436.0" layoutY="724.0" mnemonicParsing="false" text="Insertar" />
    </children>
 </Pane>

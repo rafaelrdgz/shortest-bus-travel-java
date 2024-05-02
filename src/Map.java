@@ -110,5 +110,14 @@ public class Map extends LinkedGraph {
             r.removeBusStop(this, b);
         }
     }
+    public BusStop findBusStop(BusStop bs){
+        Iterator<Vertex> iter = this.getVerticesList().iterator();
+        while (iter.hasNext()) {
+            Vertex v = iter.next();
+            if(((BusStop)v.getInfo()).getId().equalsIgnoreCase(bs.getId()))
+            return (BusStop) v.getInfo();
+        }
+        return null;
+    }
 
 }
